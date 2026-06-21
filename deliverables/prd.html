@@ -34,10 +34,10 @@
 <body>
 <div class="shell">
   <header>
-    <div class="eyebrow">AI EARLY-STAGE OPPORTUNITY VALIDATION · REVIEW DRAFT</div>
+    <div class="eyebrow">AI EARLY-STAGE OPPORTUNITY VALIDATION</div>
     <h1>PawCheck 轻量机会验证 PRD</h1>
     <p class="lead">面向第一次养猫/狗的年轻宠主，用 AI 完成“就医前风险分流、观察记录与医生摘要”。产品不做诊断，解决的是从反复搜索到采取正确行动之间的决策断层。</p>
-    <div class="meta"><span class="pill">目标：笔试提交 + 面试演示</span><span class="pill">阶段：内容审查稿</span><span class="pill">MVP：非诊断性辅助</span><span class="pill">版本：2026-06-20</span></div>
+    <div class="meta"><span class="pill">用途：笔试提交 + 面试演示</span><span class="pill">材料：机会验证 PRD</span><span class="pill">MVP：非诊断性辅助</span><span class="pill">版本：2026-06-21</span></div>
   </header>
 
   <div class="layout">
@@ -45,12 +45,12 @@
       <strong>CONTENT</strong>
       <a href="#summary">00｜结论摘要</a><a href="#opportunity">01｜机会判断</a><a href="#evidence">02｜用户证据</a>
       <a href="#mvp">03｜MVP 样例</a><a href="#business">04｜商业判断</a><a href="#validation">05｜两周验证计划</a>
-      <a href="#risk">06｜安全与风险</a><a href="#sources">07｜来源与待补材料</a>
+      <a href="#risk">06｜安全与风险</a><a href="#sources">07｜来源与证据说明</a>
     </nav>
 
     <main>
       <section id="summary">
-        <div class="thesis">新手宠主缺的不是更多答案，而是一个能在焦虑时把零散信息变成<em>下一步行动</em>的工具。</div>
+        <div class="thesis">新手宠主需要一个能在焦虑时把零散信息转化为<em>下一步行动</em>的工具。</div>
         <div class="grid three">
           <div class="card"><div class="number">1</div><h3>问题</h3><p>宠物呕吐、软便、精神差时，用户不知道该观察、问群还是立刻就医。</p></div>
           <div class="card"><div class="number">2</div><h3>方案</h3><p>AI 结构化追问，输出风险等级、观察清单、升级条件和医生摘要。</p></div>
@@ -73,13 +73,13 @@
 
         <h3>为什么现在值得做</h3>
         <div class="grid">
-          <div class="card"><h3>人群时机｜宠主年轻化</h3><div class="bigstat">66.8%</div><p>用户提供的《2025 年中国宠物行业白皮书》相关报道口径中，2024 年 90 后占 41.2%，00 后占 25.6%。</p><div class="caption">二手行业数据；提交前建议补报告页码或媒体原文截图。</div></div>
-          <div class="card"><h3>市场时机｜健康消费成规模</h3><div class="bigstat">3000 亿+</div><p>用户材料显示，2024 年中国城镇犬猫消费市场已突破 3000 亿元、犬猫数量超过 1.2 亿只。</p><div class="caption">白皮书相关报道口径；应补可追溯出处。</div></div>
+          <div class="card"><h3>人群时机｜宠主年轻化</h3><div class="bigstat">66.8%</div><p>用户提供的《2025 年中国宠物行业白皮书》相关报道口径中，2024 年 90 后占 41.2%，00 后占 25.6%。</p><div class="caption">行业报道数据，引用时应附报告页码或媒体原文。</div></div>
+          <div class="card"><h3>市场时机｜健康消费成规模</h3><div class="bigstat">3000 亿+</div><p>用户材料显示，2024 年中国城镇犬猫消费市场已突破 3000 亿元、犬猫数量超过 1.2 亿只。</p><div class="caption">行业白皮书相关报道数据，引用时应附可追溯出处。</div></div>
           <div class="card"><h3>需求时机｜决策摩擦突出</h3><p>医疗费用高、平台信息矛盾、线上问诊又要求用户先描述清楚，形成“担心但不会判断”的空白环节。</p></div>
           <div class="card"><h3>技术时机｜AI 适合结构化</h3><p>大模型已能低成本完成动态追问、信息抽取、时间线整理和可读摘要；红旗症状再由规则引擎兜底。</p></div>
         </div>
 
-        <h3>为什么不是直接使用通用 AI</h3>
+        <h3>PawCheck 与通用 AI 的差异</h3>
         <table>
           <tr><th>维度</th><th>通用 AI / 搜索</th><th>PawCheck</th></tr>
           <tr><td>输入</td><td>依赖用户自己组织问题</td><td>按宠物档案和症状动态追问</td></tr>
@@ -102,12 +102,20 @@
           <div class="card"><span class="tag verified">技术可行性</span><h3>兽医从业者已经在使用 AI</h3><p>一项 2025 年对中国 455 名兽医从业者的横截面调查报告了较高 AI 使用率，同时把可靠性与准确性列为主要顾虑，支持“可做，但必须重安全边界”的判断。</p><a href="https://arxiv.org/abs/2510.11758" target="_blank">研究预印本 ↗</a></div>
         </div>
 
-        <h3>建议补入提交稿的中国本土证据</h3>
+        <h3>用户证据的初步判断</h3>
+        <div class="grid">
+          <div class="card"><h3>宠物生病时的焦虑</h3><p>宠主在呕吐、软便、拒食、精神差等场景中，常需要判断是否高危、能否观察、何时联系医院。社交平台和社群中的多种建议容易增加决策成本，夜间求助与回复延迟会进一步放大焦虑。</p></div>
+          <div class="card"><h3>相邻服务已有付费行为</h3><p>宠物在线问诊、医疗险、医院套餐，以及益生菌、试纸、驱虫药和肠胃调理产品已有实际消费。这些行为说明年轻宠主愿意为宠物健康和不确定性付费。</p></div>
+          <div class="card"><h3>AI 服务的付费仍需验证</h3><p>相邻消费能够支撑付费可能性，但尚未证明用户会为“AI 预分流 + 医生摘要”单独付费。后续应通过单次 3.9–9.9 元、月卡 19.9 元等方案观察真实或模拟支付选择。</p></div>
+          <div class="card"><h3>价格敏感反映低成本辅助需求</h3><p>“宠物医院贵、担心过度检查、不知道是否需要就医”等讨论，体现用户希望降低错误就医成本。产品价值集中在风险提示、观察记录和问诊沟通整理。</p></div>
+        </div>
+
+        <h3>中国本土证据采集方向</h3>
         <table>
           <tr><th>证据</th><th>怎么采</th><th>要证明什么</th><th>注意</th></tr>
           <tr><td>小红书/抖音异常求助帖 8–12 条</td><td>搜索“猫吐了怎么办”“狗拉稀要去医院吗”“新手养猫生病”</td><td>高频症状、焦虑语言、回复冲突和延迟</td><td>保留发布日期、点赞/评论量；昵称打码</td></tr>
           <tr><td>京东/淘宝在线问诊评论 10 条</td><td>检索“宠物医生 24 小时在线问诊”并截取购买后评论</td><td>用户已经为夜间、便捷和初步判断付费</td><td>不得把商品销量等同于本产品需求</td></tr>
-          <tr><td>益生菌/试纸评论 10 条</td><td>检索“猫咪益生菌 软便”“宠物尿检试纸”</td><td>用户会为不确定性购买替代性解决方案</td><td>只能作为间接证据</td></tr>
+          <tr><td>益生菌/试纸评论 10 条</td><td>检索“猫咪益生菌 软便”“宠物尿检试纸”</td><td>用户会为不确定性购买替代性解决方案</td><td>作为间接付费证据使用</td></tr>
           <tr><td>新手宠主访谈 5–8 人</td><td>复盘最近一次异常事件，从触发到解决画时间线</td><td>真实决策路径、信任阈值和支付触发点</td><td>这是两周计划中的关键补证</td></tr>
         </table>
 
@@ -117,7 +125,7 @@
           <tr><td>新手宠主在异常场景中会焦虑并反复搜索</td><td><span class="tag observe">较强推断</span></td><td>需中国平台截图和访谈进一步固化。</td></tr>
           <tr><td>用户愿为宠物健康、咨询和降低不确定性付费</td><td><span class="tag verified">相邻验证</span></td><td>在线问诊、保险、试纸和补充剂已有交易，但未证明会单独为 AI 付费。</td></tr>
           <tr><td>“风险分流 + 医生摘要”比通用 AI 更值得付费</td><td><span class="tag hypothesis">核心假设</span></td><td>必须通过对照测试和价格实验验证。</td></tr>
-          <tr><td>长期单宠记忆会带来复用和留存</td><td><span class="tag hypothesis">留存假设</span></td><td>需要跨两次健康事件观察，短期访谈只能验证感知价值。</td></tr>
+          <tr><td>长期单宠记忆会带来复用和留存</td><td><span class="tag hypothesis">留存假设</span></td><td>需要跨两次健康事件观察；短期访谈能够先验证感知价值。</td></tr>
         </table>
       </section>
 
@@ -132,7 +140,7 @@
           <div class="step"><strong>保存与衔接</strong><br><span class="small">事件记录 + 医生摘要</span></div>
         </div>
 
-        <h3>风险分流，而不是诊断</h3>
+        <h3>风险分流与诊断边界</h3>
         <div class="risk">
           <div class="green"><strong>低风险｜短时观察</strong><p>状态稳定、无红旗表现。给出观察时长、记录项和升级条件。</p></div>
           <div class="yellow"><strong>中风险｜尽快咨询</strong><p>症状重复、精神或进食变化。建议在明确时限内联系医院/线上兽医。</p></div>
@@ -159,7 +167,7 @@
         </table>
 
         <h3>核心 Prompt 结构（概念版）</h3>
-        <div class="card"><code>角色边界 → 宠物档案 → 当前事件 → 必填信息槽位 → 红旗规则结果 → 只追问一个最高信息增益问题 → 输出风险等级、依据、行动、升级条件、信息缺口 → 生成医生摘要 → 保存经用户确认的结构化记录</code></div>
+        <div class="card"><code>角色边界 → 宠物档案 → 当前事件 → 必填信息槽位 → 红旗规则结果 → 每轮提出一个最高信息增益问题 → 输出风险等级、依据、行动、升级条件、信息缺口 → 生成医生摘要 → 保存经用户确认的结构化记录</code></div>
 
         <h3>成功指标</h3>
         <div class="grid three">
@@ -174,7 +182,7 @@
         <h3>谁会付费，为什么付费</h3>
         <div class="grid">
           <div class="card"><h3>高意愿人群</h3><ul><li>接宠 0–12 个月、经验不足；</li><li>独居或夜间缺少可求助对象；</li><li>已经购买保险、益生菌、试纸或线上问诊；</li><li>宠物有复发性肠胃、皮肤或泌尿问题。</li></ul></div>
-          <div class="card"><h3>支付的不是“AI 答案”</h3><ul><li>降低错过严重症状的担忧；</li><li>少花 30–60 分钟反复搜索；</li><li>知道该记录什么、何时升级；</li><li>减少问诊时遗漏和重复描述；</li><li>持续积累单宠健康档案。</li></ul></div>
+          <div class="card"><h3>用户购买的核心价值</h3><ul><li>降低错过严重症状的担忧；</li><li>少花 30–60 分钟反复搜索；</li><li>知道该记录什么、何时升级；</li><li>减少问诊时遗漏和重复描述；</li><li>持续积累单宠健康档案。</li></ul></div>
         </div>
 
         <h3>定价假设</h3>
@@ -185,7 +193,7 @@
           <tr><td>订阅</td><td>19.9 元/月；99 元/年</td><td>多宠档案、长期记忆、复查提醒、无限摘要</td><td>验证持续价值和留存</td></tr>
           <tr><td>B2B2C</td><td>按激活/会员采购</td><td>保险权益、医院术后随访、品牌会员工具</td><td>降低获客成本；后置验证</td></tr>
         </table>
-        <p class="small">价格是待验证假设，不是收入预测。医疗相关导流不得影响风险等级，避免利益冲突。</p>
+        <p class="small">价格属于待验证假设，不代表收入预测。医疗相关导流不得影响风险等级，避免利益冲突。</p>
 
         <h3>获客路径</h3>
         <ol>
@@ -196,27 +204,33 @@
         </ol>
 
         <h3>竞争与护城河判断</h3>
-        <p>短期壁垒不是模型，而是<strong>高质量分流规则、真实病例评测集、医生审核流程、单宠纵向数据和可信的安全体验</strong>。社区数据可成为长期增强项，但不应在早期成为内容审核负担。</p>
+        <p>短期壁垒主要来自<strong>高质量分流规则、真实病例评测集、医生审核流程、单宠纵向数据和可信的安全体验</strong>。社区数据可作为长期增强项，早期阶段暂不承担社区内容审核成本。</p>
       </section>
 
       <section id="validation">
-        <h2>05｜如果给我两周：验证产品与市场</h2>
-        <p>目标不是开发完整 App，而是用可控成本验证四个最危险的假设：需求是否高频、输出是否可理解、用户是否信任、是否存在付费与复用意愿。</p>
+        <h2>05｜2周验证计划：验证 Demo 是否成立</h2>
+        <p>两周内围绕需求真实性、输出可理解性、用户信任度、付费意愿和复用可能性开展验证，并据此判断产品是否值得继续推进。</p>
         <table>
-          <tr><th>时间</th><th>动作</th><th>产出</th><th>决策指标</th></tr>
-          <tr><td>Day 1–2</td><td>招募 8–12 位 0–2 年经验宠主；收集最近一次异常事件</td><td>决策旅程、搜索截图、原话与替代方案</td><td>≥60% 发生过“不知道是否就医”的事件</td></tr>
-          <tr><td>Day 3–4</td><td>与 1–2 名兽医/资深宠主共建 12 个案例和红旗规则</td><td>案例集、风险金标准、安全禁区</td><td>覆盖呕吐、软便、精神差、皮肤、泌尿等高频场景</td></tr>
-          <tr><td>Day 5–7</td><td>制作 Wizard-of-Oz Demo；AI 生成后由人工审核再展示</td><td>可点击原型、输出样片、对照版通用 AI 答案</td><td>高风险召回优先；不得出现危险安抚或具体处方</td></tr>
-          <tr><td>Day 8–10</td><td>5–8 场可用性测试，让用户用真实经历完成流程</td><td>完成率、理解度、信任评分、关键困惑</td><td>≥80% 能复述行动；平均帮助度 ≥4/5</td></tr>
-          <tr><td>Day 11–12</td><td>价格实验：免费、9.9 元单次、99 元年费三种落地页</td><td>点击、留资、模拟支付选择</td><td>不以口头“愿意”替代行为信号</td></tr>
-          <tr><td>Day 13–14</td><td>复盘证据，确定继续、调整或停止</td><td>验证报告、风险清单、下一阶段范围</td><td>需求、信任、付费三项至少两项达到门槛</td></tr>
+          <tr><th>时间</th><th>验证重点</th><th>具体动作</th><th>判断标准</th></tr>
+          <tr><td>Day 1–3</td><td>验证用户是否有真实需求</td><td>找 5–8 位养宠新手进行 Demo 测试，优先选择养猫/养狗 0–6 个月的新手宠主；让他们基于真实经历输入一次症状，例如软便、呕吐、食欲下降、精神差。</td><td>至少 70% 用户认可该场景真实存在；至少 5 人表示自己曾经在小红书、微信群或百度反复搜索类似问题。</td></tr>
+          <tr><td>Day 4–6</td><td>验证 AI 输出是否有用</td><td>观察用户能否理解“风险等级、观察清单、医生摘要”；记录用户觉得有帮助和不信任的地方。</td><td>至少 5 人认为观察清单或医生摘要带来实际帮助；用户能清楚理解产品不替代兽医诊断。</td></tr>
+          <tr><td>Day 7–9</td><td>验证核心功能优先级</td><td>让用户在症状追问、风险分流、医生摘要三项功能中排序；根据反馈优化 Demo 文案和页面结构。</td><td>筛选出最有价值的 1–2 个核心功能，避免 MVP 功能过散。</td></tr>
+          <tr><td>Day 10–12</td><td>验证付费意愿</td><td>询问用户是否愿意为单次分流 3.9–9.9 元、月卡 19.9 元或宠物新手包付费，并记录原因。</td><td>至少 3 人表示在紧急或焦虑场景下愿意付费；明确用户更接受单次付费还是月卡。</td></tr>
+          <tr><td>Day 13–14</td><td>总结是否继续推进</td><td>汇总访谈记录、Demo 使用反馈、付费意愿和修改建议，判断下一步继续开发、转向线上问诊辅助，或聚焦医生摘要工具。</td><td>输出验证结论：保留功能、删除功能、下一版 MVP 方向，以及是否值得继续投入。</td></tr>
         </table>
 
-        <h3>资源投入</h3>
+        <h3>所需资源</h3>
         <div class="grid three">
-          <div class="card"><h3>人员</h3><p>1 名产品发起人；1 名前端/原型支持；1–2 名兽医或有经验宠主做安全审核。</p></div>
-          <div class="card"><h3>样本</h3><p>8–12 名新手宠主；12–20 个脱敏真实案例；覆盖猫狗和不同年龄段。</p></div>
-          <div class="card"><h3>工具与预算</h3><p>现有大模型 API、原型工具、录屏和问卷；激励预算约 800–1500 元。</p></div>
+          <div class="card"><h3>测试用户</h3><p>5–8 位养宠新手。</p></div>
+          <div class="card"><h3>安全审核</h3><p>1 名有经验宠主或兽医。</p></div>
+          <div class="card"><h3>测试材料</h3><p>现有 Demo 原型、1 份测试问卷、1 份访谈记录表。</p></div>
+        </div>
+
+        <h3>核心验证指标</h3>
+        <div class="grid three">
+          <div class="card"><h3>需求与理解</h3><p>需求真实性、输出可理解性。</p></div>
+          <div class="card"><h3>信任与付费</h3><p>用户信任度、付费意愿。</p></div>
+          <div class="card"><h3>持续价值</h3><p>复用可能性。</p></div>
         </div>
 
         <h3>Go / Pivot / Stop</h3>
@@ -224,7 +238,7 @@
           <tr><th>决策</th><th>条件</th></tr>
           <tr><td><span class="score">GO</span></td><td>多数目标用户有真实事件；行动理解度 ≥80%；信任 ≥4/5；出现明确支付或留资行为。</td></tr>
           <tr><td><span class="score">PIVOT</span></td><td>分流不被信任，但“症状记录 + 医生摘要”获得高评价，则收窄为就医沟通工具。</td></tr>
-          <tr><td><span class="score">STOP</span></td><td>用户只愿使用免费通用 AI；无法在可接受成本下建立安全评测与兽医审核机制。</td></tr>
+          <tr><td><span class="score">STOP</span></td><td>用户倾向继续使用免费通用 AI，且项目无法在可接受成本下建立安全评测与兽医审核机制。</td></tr>
         </table>
       </section>
 
@@ -241,20 +255,20 @@
       </section>
 
       <section id="sources">
-        <h2>07｜来源与提交前待补材料</h2>
+        <h2>07｜来源与证据说明</h2>
         <ol>
-          <li>《2025 年中国宠物行业白皮书》相关报道：本稿沿用用户提供的 90 后 41.2%、00 后 25.6%、市场 3000 亿元以上等口径；正式提交前补报告页码、媒体链接或截图。</li>
+          <li>《2025 年中国宠物行业白皮书》相关报道：本稿沿用用户提供的 90 后 41.2%、00 后 25.6%、市场 3000 亿元以上等口径；正式引用应附报告页码、媒体链接或截图。</li>
           <li><a href="https://www.gov.uk/cma-cases/veterinary-services-for-household-pets-market-investigation" target="_blank">UK CMA：Veterinary services for household pets market investigation</a>。</li>
           <li><a href="https://www.washingtonpost.com/home/2026/01/05/cat-vomiting-frequency-causes-solutions/" target="_blank">Ask a Vet：猫呕吐记录、照片与视频对问诊的帮助</a>。</li>
           <li><a href="https://arxiv.org/abs/2510.11758" target="_blank">The Adoption Paradox：中美兽医 AI 使用调查（预印本）</a>。</li>
           <li><a href="https://vetster.com/" target="_blank">Vetster</a>、<a href="https://www.dutch.com/" target="_blank">Dutch</a>：相邻在线兽医服务。</li>
         </ol>
-        <div class="callout warning"><strong>提交前最值得补的一页：</strong>3–4 张中国平台真实截图 + 5 位新手宠主访谈摘录。它们会显著提高“用户证据”部分的可信度，比继续增加行业规模数字更有价值。</div>
+        <div class="callout warning"><strong>证据完善方向：</strong>3–4 张中国平台真实截图与 5 位新手宠主访谈摘录，能够进一步提高“用户证据”部分的可信度。</div>
       </section>
     </main>
   </div>
   <footer>
-    PawCheck · 轻量机会验证 PRD · 内容审查稿。产品仅提供就医前信息整理与风险提示，不替代执业兽医诊断。
+    PawCheck · 轻量机会验证 PRD。产品提供就医前信息整理与风险提示，不替代执业兽医诊断。
     <div class="print-note">提示：浏览器中可直接打印或另存为 PDF。建议开启“背景图形”。</div>
   </footer>
 </div>

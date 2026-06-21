@@ -34,8 +34,8 @@
 <body>
 <div class="page">
   <aside class="context">
-    <div class="eyebrow">FOUR-SCREEN MVP · REVIEW DRAFT</div>
-    <h1>证明一次分流闭环，<br>而不是展示完整 App</h1>
+    <div class="eyebrow">FOUR-SCREEN INTERACTIVE MVP</div>
+    <h1>用一次完整分流，<br>展示 MVP 核心价值</h1>
     <p>同一案例贯穿宠物档案、异常输入、动态追问和综合结果，突出 PawCheck 相比通用 AI 的结构化、安全性与单宠记忆。</p>
     <div class="path"><div><b>01</b>宠物档案</div><div><b>02</b>异常输入</div><div><b>03</b>AI 追问</div><div><b>04</b>综合结果</div></div>
   </aside>
@@ -47,7 +47,7 @@
       <div class="top"><div class="brand">PawCheck</div><span class="tiny">宠物档案</span></div>
       <div class="pet"><div class="petpic">🐈</div><div><strong>奶盖</strong><span class="tiny">英短 · 已建立连续健康档案</span></div></div>
       <h2>先认识奶盖，再判断这次异常</h2>
-      <p class="sub">这些信息只需维护一次，后续问答会自动带入。</p>
+      <p class="sub">这些信息完成首次维护后，后续问答会自动带入。</p>
       <div class="facts">
         <div class="fact"><span>年龄 / 体重</span><b>2 岁 · 4.6 kg</b></div>
         <div class="fact"><span>绝育</span><b>已绝育</b></div>
@@ -85,7 +85,7 @@
       <div class="known"><strong>已掌握：</strong>成年猫 · 软便 3 天 · 精神食欲基本正常 · 近期换粮</div>
       <div class="question">便便中是否看到鲜红色血液、黑色柏油样物，或大量黏液？</div>
       <div class="whyask">为什么问：出血表现会直接提高就医紧急程度。</div>
-      <button class="choice selected" onclick="selectChoice(this)"><b>A</b><span><strong>没有发现</strong><br><span class="tiny">颜色正常或只是偏软</span></span></button>
+      <button class="choice selected" onclick="selectChoice(this)"><b>A</b><span><strong>没有发现</strong><br><span class="tiny">颜色正常或表现为偏软</span></span></button>
       <button class="choice" onclick="selectChoice(this)"><b>B</b><span><strong>有少量血丝或较多黏液</strong></span></button>
       <button class="choice" onclick="selectChoice(this)"><b>C</b><span><strong>明显便血或黑便</strong></span></button>
       <button class="ghost" onclick="selectChoice(this)">我不确定</button>
@@ -118,9 +118,9 @@
   </main>
 
   <aside class="notes">
-    <div class="note"><h3>Prompt 约束</h3><p class="prompt">档案与输入 → 补齐必要字段 → 红旗优先 → 每次只问一个关键问题 → 固定输出风险、依据、行动、升级条件 → 生成医生摘要</p></div>
-    <div class="note"><h3>不是套壳聊天框</h3><p>通用 AI 给一次性回答；PawCheck 用固定协议、健康时间线和安全规则把回答收敛成行动。</p></div>
-    <div class="note"><h3>MVP 只证明一件事</h3><p>用户描述异常后，是否能更清楚地知道下一步，并更有效地与医生沟通。</p></div>
+    <div class="note"><h3>Prompt 约束</h3><p class="prompt">档案与输入 → 补齐必要字段 → 红旗优先 → 每次提出一个关键问题 → 固定输出风险、依据、行动、升级条件 → 生成医生摘要</p></div>
+    <div class="note"><h3>结构化健康助手</h3><p>通用 AI 通常提供一次性回答；PawCheck 通过固定协议、健康时间线和安全规则，把信息整理为明确行动。</p></div>
+    <div class="note"><h3>MVP 验证目标</h3><p>验证用户描述异常后，能否更清楚地知道下一步，并更有效地与医生沟通。</p></div>
   </aside>
 </div>
 <script>
