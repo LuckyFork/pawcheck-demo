@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PawCheck｜A4 轻量机会验证</title>
+  <style>
+    @page{size:A4 portrait;margin:0}
+    :root{--ink:#17312d;--muted:#63736e;--brand:#126c5d;--soft:#e3f3ec;--paper:#fbfaf6;--line:#dbe5e0;--warn:#a15e09;--warnbg:#fff1d4;--red:#a64040}
+    *{box-sizing:border-box}body{margin:0;background:#dfe5e1;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+    .sheet{width:210mm;height:297mm;margin:18px auto;background:var(--paper);padding:12mm 14mm 9mm;box-shadow:0 20px 60px rgba(20,45,40,.18);position:relative;overflow:hidden}
+    .sheet:before{content:"";position:absolute;width:78mm;height:78mm;border-radius:50%;background:#d9eee6;right:-30mm;top:-36mm}
+    header{position:relative;display:grid;grid-template-columns:1fr auto;gap:10mm;align-items:start;border-bottom:1.4px solid var(--ink);padding-bottom:4.5mm}
+    .eyebrow{font-size:7pt;letter-spacing:.15em;color:var(--brand);font-weight:900}.title{font-size:29pt;line-height:1;margin:2mm 0 1.7mm;letter-spacing:-.04em}.subtitle{font-size:9.6pt;line-height:1.42;max-width:135mm;margin:0}.badge{background:var(--ink);color:#fff;border-radius:18mm;width:29mm;height:29mm;display:grid;place-items:center;text-align:center;font-size:7.5pt;font-weight:850;line-height:1.25}
+    .thesis{font-size:13.5pt;line-height:1.4;font-weight:800;margin:4.5mm 0 4mm}.thesis em{color:var(--brand);font-style:normal}
+    .content{display:grid;grid-template-columns:1.04fr .96fr;gap:5mm}.column{min-width:0}.numbered-section{margin-bottom:4mm}.label{font-size:6.8pt;color:var(--brand);font-weight:900;letter-spacing:.13em;text-transform:uppercase;margin-bottom:1mm}.numbered-section h2{font-size:11.5pt;line-height:1.25;margin:0 0 2mm}.numbered-section p,.numbered-section li{font-size:7.2pt;line-height:1.44}.numbered-section p{margin:0}.numbered-section ul{margin:0;padding-left:3.6mm}
+    .pain{background:var(--ink);color:#fff;border-radius:5mm;padding:4mm}.pain .label{color:#8bddc3}.pain h2{color:#fff}.pain p{color:#dce9e4;margin-top:1mm}.pain strong{color:#8bddc3}.why-now{margin-top:2.5mm;padding-top:2.2mm;border-top:1px solid rgba(255,255,255,.18)}.why-now b{display:block;color:#8bddc3;font-size:7.4pt;margin-bottom:1mm}.why-now ul{color:#e2ede9}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5mm;margin-top:2.4mm}.stat{background:rgba(255,255,255,.1);border-radius:2.5mm;padding:1.8mm}.stat b{display:block;color:#8bddc3;font-size:9pt}.stat span{display:block;color:#dce9e4;font-size:5.7pt;line-height:1.25}
+    .evidence{display:grid;grid-template-columns:1fr 1fr;gap:2mm}.evi{background:#fff;border:1px solid var(--line);border-radius:3mm;padding:2.5mm}.evi b{font-size:7.5pt;color:var(--brand);display:block;margin-bottom:.7mm}.evi p{font-size:6.4pt;color:var(--muted)}.evi.full{grid-column:1/-1;background:var(--soft)}.source-tags{display:flex;gap:1mm;flex-wrap:wrap;margin-top:1.3mm}.source-tags span{background:#fff;color:var(--brand);border-radius:9mm;padding:.6mm 1.2mm;font-size:5.7pt;font-weight:800}.placeholder{margin-top:1.4mm;background:#fff;border:1px dashed #9cbdb1;border-radius:2mm;padding:1.5mm;color:var(--muted);font-size:6pt;line-height:1.35}.placeholder strong{color:var(--brand)}
+    .sample{background:#fff;border:1.2px solid var(--brand);border-radius:4mm;padding:3mm}.sample-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:2mm}.bubble{background:var(--soft);border-radius:2.7mm;padding:2.2mm}.bubble+.bubble{margin-top:1.5mm}.bubble b,.output b{font-size:6.8pt}.bubble p,.output p,.output li{font-size:6.1pt;line-height:1.37}.bubble p{margin-top:.7mm}.output{background:#f5f8f6;border-radius:2.7mm;padding:2.2mm}.risk{display:inline-block;background:var(--warnbg);color:var(--warn);font-size:5.7pt!important;font-weight:900;padding:.7mm 1.3mm;border-radius:8mm;margin-bottom:.7mm}.output ul{margin:.8mm 0;padding-left:3mm}.doctor{background:#fff;border-left:2px solid var(--brand);padding:1.2mm;margin-top:1mm}.prototype-link{margin-top:2mm;border:1px dashed #9cbdb1;border-radius:2mm;padding:1.4mm;font-size:5.9pt;color:var(--muted)}.prototype-link b{color:var(--brand)}
+    .business{display:grid;grid-template-columns:1fr 1fr;gap:2mm}.mini{border-top:2px solid var(--brand);background:#fff;border-radius:0 0 3mm 3mm;padding:2.5mm}.mini b{font-size:7.5pt}.mini p,.mini li{font-size:6.5pt;line-height:1.4}.mini ul{padding-left:3mm}.price{color:var(--brand);font-weight:900}.funnel{background:var(--soft);border-radius:2mm;padding:1.5mm;margin-top:1.2mm}
+    .planbox{background:#fff;border:1px solid var(--line);border-radius:4mm;padding:3mm}.timeline{display:grid;grid-template-columns:1fr 1fr;gap:1.5mm}.day{background:#f3f7f5;border-radius:2.5mm;padding:2mm}.day b{font-size:6.8pt;color:var(--brand)}.day p{font-size:6.1pt;margin-top:.5mm}.subhead{font-size:7.2pt;font-weight:850;color:var(--brand);margin:2.5mm 0 1mm}.resources{display:grid;grid-template-columns:1fr 1fr;gap:1.4mm}.resource{background:var(--soft);border-radius:2mm;padding:1.5mm;font-size:6.1pt;line-height:1.35}.resource:last-child{grid-column:1/-1}.metrics{display:flex;flex-wrap:wrap;gap:1mm}.metric{background:var(--ink);color:#e2f3ed;border-radius:9mm;padding:.8mm 1.4mm;font-size:5.8pt;font-weight:800}
+    .safety{background:var(--soft);border-radius:3mm;padding:2.4mm;display:grid;grid-template-columns:auto 1fr;gap:2mm;align-items:center}.safety strong{font-size:8pt;color:var(--brand)}.safety p{font-size:6.2pt;color:#456059}.note{font-size:5.8pt!important;color:var(--muted)!important;margin-top:1.5mm!important}
+    footer{position:absolute;bottom:5.5mm;left:14mm;right:14mm;display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:2.2mm;font-size:5.8pt;color:var(--muted)}footer b{color:var(--ink)}
+    @media print{body{background:#fff}.sheet{margin:0;box-shadow:none}}@media(max-width:800px){.sheet{margin:0;box-shadow:none}}
+  </style>
+</head>
+<body>
+<article class="sheet">
+  <header>
+    <div>
+      <div class="eyebrow">PET AI · LIGHTWEIGHT OPPORTUNITY VALIDATION</div>
+      <div class="title">PawCheck</div>
+      <p class="subtitle">新手宠主的 AI 就医前分流与症状记录助手：不替代兽医诊断，帮助用户判断下一步、有效观察，并把情况清楚地告诉医生。</p>
+    </div>
+    <div class="badge">笔试<br>汇报页</div>
+  </header>
+
+  <p class="thesis">新手宠主不缺健康信息，缺的是在焦虑时把信息变成<em>下一步行动</em>。</p>
+
+  <div class="content">
+    <div class="column">
+      <section class="numbered-section pain">
+        <div class="label">01 · 机会判断</div>
+        <h2>填补“搜索/问群”和“正式就医”之间的决策断层</h2>
+        <p><strong>目标用户：</strong>18–30 岁、第一次养猫/狗，尤其是接宠 0–6 个月的学生、独居青年和新手主人。</p>
+        <p><strong>核心痛点：</strong>宠物软便、呕吐或精神差时，既怕延误，也担心医院成本；平台信息很多却相互矛盾，问诊前又不知道该记录与描述什么。</p>
+        <div class="why-now"><b>为什么现在值得做</b><ul><li>年轻宠主把宠物视为家庭成员，健康焦虑与支付意愿增强</li><li>问诊、保险、益生菌和试纸已形成相邻消费</li><li>大模型适合结构化追问、风险提示和摘要生成</li></ul></div>
+        <div class="stats"><div class="stat"><b>年轻化</b><span>90 后、00 后成为养宠主力</span></div><div class="stat"><b>3000 亿+</b><span>城镇犬猫消费市场</span></div><div class="stat"><b>约 940 亿</b><span>宠物医疗市场规模</span></div></div>
+      </section>
+
+      <section class="numbered-section">
+        <div class="label">02 · 用户证据</div>
+        <h2>从多来源观察真实求助场景与健康付费行为</h2>
+        <div class="evidence">
+          <div class="evi"><b>平台评论</b><p>小红书、抖音用于观察异常求助、焦虑表达与信息冲突；淘宝/京东用于观察在线问诊及健康商品的购买动机。</p></div>
+          <div class="evi"><b>用户访谈</b><p>围绕最近一次宠物异常，复盘用户如何搜索、判断、记录、就医，以及在哪个环节最需要帮助。</p></div>
+          <div class="evi full"><b>证据整理维度</b><p>按“不会判断严重程度、建议互相矛盾、夜间求助、医疗成本压力、已经发生健康付费”进行编码，并保留来源、关键词与截图编号。</p><div class="source-tags"><span>痛点真实性</span><span>现有替代方案</span><span>付费行为</span><span>信任与复用</span></div></div>
+        </div>
+      </section>
+
+      <section class="numbered-section sample">
+        <div class="label">03 · MVP 样例</div>
+        <h2>在 A4 上保留一个完整输出样片</h2>
+        <div class="sample-grid">
+          <div>
+            <div class="bubble"><b>用户输入</b><p>“2 岁猫咪软便三天，精神和吃饭基本正常，最近刚换过粮，要不要去医院？”</p></div>
+            <div class="bubble"><b>AI 关键追问</b><p>是否便血或黑便？是否呕吐？饮水是否下降？</p></div>
+          </div>
+          <div class="output">
+            <p class="risk">中低风险 · 设定观察期限</p>
+            <b>先停止新粮并记录 12–24 小时；持续或加重则联系兽医</b>
+            <ul><li>观察排便、食欲、饮水与精神</li><li>便血、反复呕吐、拒食或萎靡时升级</li><li>不要自行使用人药或无限期等待</li></ul>
+            <p class="doctor"><b>医生摘要：</b>成年猫软便 3 天，精神食欲稳定，近期换粮，目前未见明显便血或呕吐。</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="column">
+      <section class="numbered-section">
+        <div class="label">04 · 商业判断</div>
+        <h2>用户不是为“AI 字数”付费，而是为降低判断与沟通成本</h2>
+        <div class="business">
+          <div class="mini"><b>谁会付费</b><p>接宠 0–6 个月、遇到异常会焦虑、又担心直接就医成本的新手宠主。</p></div>
+          <div class="mini"><b>为什么付费</b><ul><li>降低错误判断成本</li><li>减少无效搜索时间</li><li>改善问诊描述与记录</li><li>沉淀单宠健康时间线</li></ul></div>
+          <div class="mini"><b>定价假设</b><p>免费：每月 3 次基础分流<br><span class="price">¥4.9–9.9 / 次</span>：单次深度整理<br><span class="price">¥19.9 / 月</span>：档案、历史、摘要</p></div>
+          <div class="mini"><b>如何获客</b><p>小红书症状内容、抖音案例短视频、校园/同城宠物群、宠物店或医院二维码。</p><p class="funnel">观察：曝光 → 点击 → 完成分流 → 留资 / 付费 / 推荐</p></div>
+        </div>
+      </section>
+
+      <section class="numbered-section planbox">
+        <div class="label">05 · 两周验证计划</div>
+        <h2>目标：验证 Demo 是否成立，而不是开发完整 App</h2>
+        <div class="timeline">
+          <div class="day"><b>D1–3</b><p>访谈真实异常经历，确认痛点、替代方案和决策路径。</p></div>
+          <div class="day"><b>D4–6</b><p>用 6–10 个案例测试 Demo，并完成安全审核。</p></div>
+          <div class="day"><b>D7–10</b><p>让用户独立完成分流，记录理解、信任和困惑。</p></div>
+          <div class="day"><b>D11–14</b><p>测试单次/订阅价格及复用意愿，形成 Go / Pivot / Stop。</p></div>
+        </div>
+        <div class="subhead">所需资源</div>
+        <div class="resources">
+          <div class="resource">5–8 位养宠新手</div><div class="resource">1 名有经验宠主或兽医</div>
+          <div class="resource">现有 Demo 原型 · 1 份测试问卷 · 1 份访谈记录表</div>
+        </div>
+        <div class="subhead">核心验证指标</div>
+        <div class="metrics"><span class="metric">需求真实性</span><span class="metric">输出可理解性</span><span class="metric">用户信任度</span><span class="metric">付费意愿</span><span class="metric">复用可能性</span></div>
+        <p class="note">优先记录行为证据：能否正确复述下一步、是否愿意留资或点击付费、下一次异常是否愿意再次使用。</p>
+      </section>
+
+      <div class="safety"><strong>产品边界</strong><p>只做非诊断性的就医前分流和信息整理；不保证“没事”，不提供处方剂量；高风险表现直接提示联系宠物急诊或执业兽医。</p></div>
+    </div>
+  </div>
+
+  <footer><span><b>PawCheck</b> · AI 就医前分流与症状记录助手</span><span>核心验证：用户能否更清楚地知道下一步，并更有效地与医生沟通</span></footer>
+</article>
+</body>
+</html>

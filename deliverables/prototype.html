@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PawCheck｜四屏 MVP 原型</title>
+  <style>
+    :root{--ink:#17322d;--muted:#667872;--brand:#126e5e;--soft:#e1f3ec;--paper:#f5f1e8;--white:#fff;--line:#d9e5df;--warn:#9b5b0b;--warnbg:#fff0d2;--red:#a63e3e;--redbg:#fde9e6;--shadow:0 28px 70px rgba(23,50,45,.18)}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 15% 12%,#d9eee6,transparent 28%),radial-gradient(circle at 85% 86%,#f3dcb8,transparent 32%),var(--paper);color:var(--ink);font:14px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+    button,textarea{font:inherit}.page{display:grid;grid-template-columns:1fr 430px 1fr;gap:42px;align-items:center;min-height:100vh;padding:34px}
+    .context{max-width:380px;justify-self:end}.eyebrow{font-size:12px;letter-spacing:.16em;color:var(--brand);font-weight:900}.context h1{font-size:43px;line-height:1.08;letter-spacing:-.04em;margin:9px 0 16px}.context>p{font-size:16px;color:var(--muted)}
+    .path{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:22px}.path div{background:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.9);border-radius:12px;padding:9px 5px;text-align:center;color:var(--muted);font-size:11px}.path b{display:block;color:var(--brand)}
+    .notes{max-width:335px}.note{background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);border-radius:18px;padding:16px;margin:11px 0}.note h3{font-size:13px;margin:0 0 6px}.note p{font-size:12px;color:var(--muted);margin:0}.prompt{font-size:11px;color:var(--brand);font-weight:750;line-height:1.7}
+    .phone{width:430px;height:860px;max-height:94vh;background:#fbfcfa;border:10px solid var(--ink);border-radius:48px;box-shadow:var(--shadow);overflow:hidden;position:relative}.notch{position:absolute;z-index:10;width:130px;height:26px;border-radius:0 0 18px 18px;background:var(--ink);left:50%;transform:translateX(-50%);top:0}
+    .screen{display:none;height:100%;overflow:auto;padding:39px 22px 88px}.screen.active{display:block}.top{display:flex;justify-content:space-between;align-items:center;margin:8px 0 20px}.brand{font-size:19px;font-weight:900;color:var(--brand)}.back{border:0;background:none;font-size:21px;color:var(--ink);cursor:pointer}.tiny{font-size:11px;color:var(--muted)}
+    h2{font-size:25px;line-height:1.25;margin:8px 0}.sub{color:var(--muted);margin:0 0 18px}.panel{background:#fff;border:1px solid var(--line);border-radius:19px;padding:15px;margin:12px 0}.panel h3{font-size:13px;margin:0 0 9px}
+    .pet{display:flex;align-items:center;gap:12px;background:var(--soft);border-radius:18px;padding:14px}.petpic{width:48px;height:48px;border-radius:15px;background:#fff;display:grid;place-items:center;font-size:27px}.pet strong{display:block}
+    .facts{display:grid;grid-template-columns:1fr 1fr;gap:9px}.fact{background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px}.fact span{display:block;font-size:10px;color:var(--muted)}.fact b{font-size:13px}.history{border-left:3px solid var(--brand);padding-left:11px;color:var(--muted);font-size:12px}
+    .primary,.secondary,.ghost{width:100%;border:0;border-radius:15px;padding:14px;font-weight:850;cursor:pointer;margin-top:9px}.primary{background:var(--brand);color:#fff;box-shadow:0 8px 18px rgba(18,110,94,.2)}.secondary{background:var(--soft);color:var(--brand)}.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+    .input{width:100%;height:94px;border:0;resize:none;outline:0;line-height:1.65;color:var(--ink)}.chips{display:flex;gap:7px;flex-wrap:wrap}.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 10px;color:var(--muted);cursor:pointer}.chip.on{background:var(--soft);border-color:#9ed2be;color:var(--brand);font-weight:750}
+    .quick{display:grid;grid-template-columns:1fr 1fr;gap:9px}.quick div{border:1px solid var(--line);border-radius:13px;padding:10px}.quick span{display:block;font-size:10px;color:var(--muted)}
+    .notice{font-size:10.5px;color:var(--muted);text-align:center;margin-top:10px}.progress{height:6px;background:#e7eeeb;border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;width:60%;background:var(--brand)}
+    .known{background:var(--soft);border-radius:14px;padding:11px;font-size:11px;color:#345b52;margin:13px 0}.question{font-size:21px;line-height:1.4;margin:20px 0 8px}.whyask{font-size:11px;color:var(--brand);font-weight:750;margin-bottom:12px}
+    .choice{display:flex;align-items:center;gap:11px;width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:15px;padding:13px;margin:8px 0;cursor:pointer;color:var(--ink)}.choice b{display:grid;place-items:center;width:29px;height:29px;background:#f1f5f3;border-radius:9px}.choice.selected{border-color:var(--brand);background:var(--soft)}
+    .status{display:inline-flex;align-items:center;gap:7px;background:var(--warnbg);color:var(--warn);font-size:12px;font-weight:900;padding:7px 10px;border-radius:999px}.status i{width:9px;height:9px;background:#e49a2d;border-radius:50%;box-shadow:0 0 0 5px rgba(228,154,45,.16)}
+    .resultHero{background:linear-gradient(145deg,#fff7e5,#ffebc1);border:1px solid #ebce94;border-radius:20px;padding:17px;margin:12px 0}.resultHero h2{font-size:21px}.resultHero p{font-size:12px;margin-bottom:0}
+    .resultgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.resultcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px}.resultcard h3{font-size:12px;margin:0 0 7px}.resultcard ul{margin:0;padding-left:16px;font-size:11px;color:#415852}.resultcard li{margin:5px 0}.danger{background:var(--redbg);border-color:#ecc0bb}.danger h3{color:var(--red)}
+    .summary{background:#f7faf8;border:1px solid var(--line);border-radius:16px;padding:13px;font-size:11px}.summary h3{margin:0 0 7px}.summary p{margin:0;color:#405650}.memory{font-size:11px;color:var(--brand);background:var(--soft);padding:9px;border-radius:11px;margin-top:9px}
+    .stepnav{position:absolute;bottom:0;left:0;right:0;height:69px;background:rgba(255,255,255,.96);border-top:1px solid var(--line);display:flex;align-items:center;justify-content:center;gap:13px;z-index:4}.dot{width:8px;height:8px;border-radius:50%;background:#d1ddd8}.dot.on{width:24px;border-radius:99px;background:var(--brand)}
+    .toast{position:absolute;left:50%;bottom:80px;transform:translateX(-50%) translateY(20px);opacity:0;background:var(--ink);color:#fff;padding:9px 14px;border-radius:999px;font-size:11px;transition:.2s;z-index:20}.toast.show{opacity:1;transform:translateX(-50%)}
+    @media(max-width:1000px){.page{grid-template-columns:1fr;padding:20px}.context,.notes{justify-self:center;text-align:center}.notes{display:none}.context h1{font-size:31px}.phone{max-width:100%;height:810px;max-height:none}}
+  </style>
+</head>
+<body>
+<div class="page">
+  <aside class="context">
+    <div class="eyebrow">FOUR-SCREEN MVP · REVIEW DRAFT</div>
+    <h1>证明一次分流闭环，<br>而不是展示完整 App</h1>
+    <p>同一案例贯穿宠物档案、异常输入、动态追问和综合结果，突出 PawCheck 相比通用 AI 的结构化、安全性与单宠记忆。</p>
+    <div class="path"><div><b>01</b>宠物档案</div><div><b>02</b>异常输入</div><div><b>03</b>AI 追问</div><div><b>04</b>综合结果</div></div>
+  </aside>
+
+  <main class="phone">
+    <div class="notch"></div><div class="toast" id="toast">已保存到奶盖的健康档案</div>
+
+    <section class="screen active" id="profile">
+      <div class="top"><div class="brand">PawCheck</div><span class="tiny">宠物档案</span></div>
+      <div class="pet"><div class="petpic">🐈</div><div><strong>奶盖</strong><span class="tiny">英短 · 已建立连续健康档案</span></div></div>
+      <h2>先认识奶盖，再判断这次异常</h2>
+      <p class="sub">这些信息只需维护一次，后续问答会自动带入。</p>
+      <div class="facts">
+        <div class="fact"><span>年龄 / 体重</span><b>2 岁 · 4.6 kg</b></div>
+        <div class="fact"><span>绝育</span><b>已绝育</b></div>
+        <div class="fact"><span>疫苗</span><b>已完成 · 今年待加强</b></div>
+        <div class="fact"><span>驱虫</span><b>28 天前</b></div>
+        <div class="fact"><span>近期变化</span><b>5 天前换粮</b></div>
+        <div class="fact"><span>基础疾病</span><b>暂无已知</b></div>
+      </div>
+      <div class="panel"><h3>相关历史</h3><div class="history">两个月前换粮后曾软便 2 天，恢复后无复发；无住院史。</div></div>
+      <button class="primary" onclick="show('input')">确认档案，描述异常</button>
+      <p class="notice">健康资料由用户维护，可随时修改或删除。</p>
+    </section>
+
+    <section class="screen" id="input">
+      <div class="top"><button class="back" onclick="show('profile')">‹</button><span class="tiny">异常输入</span><span></span></div>
+      <h2>奶盖今天哪里不舒服？</h2>
+      <p class="sub">像平时说话一样描述，系统会帮你补齐重要信息。</p>
+      <div class="panel">
+        <textarea class="input">奶盖软便三天了，精神和吃饭基本正常，最近刚换过粮，不知道要不要去医院。</textarea>
+        <div class="chips"><button class="chip on">软便</button><button class="chip">呕吐</button><button class="chip">不吃饭</button><button class="chip">精神差</button></div>
+      </div>
+      <div class="quick">
+        <div><span>持续多久</span><b>3 天</b></div>
+        <div><span>最近变化</span><b>换粮</b></div>
+        <div><span>当前食欲</span><b>基本正常</b></div>
+        <div><span>精神状态</span><b>基本正常</b></div>
+      </div>
+      <button class="primary" onclick="show('question')">开始安全筛查</button>
+      <p class="notice">如有呼吸困难、抽搐、意识异常、尿闭或疑似中毒，请立即联系急诊。</p>
+    </section>
+
+    <section class="screen" id="question">
+      <div class="top"><button class="back" onclick="show('input')">‹</button><span class="tiny">安全筛查 3 / 5</span><span></span></div>
+      <div class="progress"><i></i></div>
+      <div class="known"><strong>已掌握：</strong>成年猫 · 软便 3 天 · 精神食欲基本正常 · 近期换粮</div>
+      <div class="question">便便中是否看到鲜红色血液、黑色柏油样物，或大量黏液？</div>
+      <div class="whyask">为什么问：出血表现会直接提高就医紧急程度。</div>
+      <button class="choice selected" onclick="selectChoice(this)"><b>A</b><span><strong>没有发现</strong><br><span class="tiny">颜色正常或只是偏软</span></span></button>
+      <button class="choice" onclick="selectChoice(this)"><b>B</b><span><strong>有少量血丝或较多黏液</strong></span></button>
+      <button class="choice" onclick="selectChoice(this)"><b>C</b><span><strong>明显便血或黑便</strong></span></button>
+      <button class="ghost" onclick="selectChoice(this)">我不确定</button>
+      <button class="primary" onclick="show('result')">查看风险提示</button>
+    </section>
+
+    <section class="screen" id="result">
+      <div class="top"><button class="back" onclick="show('question')">‹</button><span class="tiny">综合结果</span><span>•••</span></div>
+      <span class="status"><i></i> 中低风险 · 建议密切观察</span>
+      <div class="resultHero">
+        <h2>先停止新粮并记录 12–24 小时；若持续或加重，联系兽医</h2>
+        <p>目前精神、食欲正常且未发现便血等红旗表现；但症状已持续 3 天，需要设定明确观察期限。此结果仅为演示，正式阈值需由兽医审核。</p>
+      </div>
+      <div class="resultgrid">
+        <div class="resultcard"><h3>为什么这样判断</h3><ul><li>成年猫，精神与食欲稳定</li><li>近期换粮可能相关</li><li>软便已持续 3 天</li></ul></div>
+        <div class="resultcard"><h3>观察清单</h3><ul><li>排便次数与形态</li><li>食欲、饮水、精神</li><li>是否呕吐或腹痛</li></ul></div>
+        <div class="resultcard"><h3>现在不要做</h3><ul><li>不要自行使用人药</li><li>不要频繁更换多种食物</li><li>不要无限期“再看看”</li></ul></div>
+        <div class="resultcard danger"><h3>立即升级条件</h3><ul><li>便血、反复呕吐</li><li>拒食、明显萎靡</li><li>症状持续或快速加重</li></ul></div>
+      </div>
+      <div class="panel summary">
+        <h3>医生摘要</h3>
+        <p>2 岁已绝育英短，软便持续 3 天，精神与食欲基本正常，5 天前更换猫粮；目前未见明显便血或呕吐。希望确认是否需要检查，以及居家观察的升级信号。</p>
+        <div class="memory">保存后将与奶盖的疫苗、驱虫和历史异常一起形成连续时间线。</div>
+      </div>
+      <button class="primary" onclick="saveResult()">复制摘要并保存到健康档案</button>
+      <button class="secondary" onclick="show('profile')">完成演示，返回档案</button>
+    </section>
+
+    <nav class="stepnav"><i class="dot on"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></nav>
+  </main>
+
+  <aside class="notes">
+    <div class="note"><h3>Prompt 约束</h3><p class="prompt">档案与输入 → 补齐必要字段 → 红旗优先 → 每次只问一个关键问题 → 固定输出风险、依据、行动、升级条件 → 生成医生摘要</p></div>
+    <div class="note"><h3>不是套壳聊天框</h3><p>通用 AI 给一次性回答；PawCheck 用固定协议、健康时间线和安全规则把回答收敛成行动。</p></div>
+    <div class="note"><h3>MVP 只证明一件事</h3><p>用户描述异常后，是否能更清楚地知道下一步，并更有效地与医生沟通。</p></div>
+  </aside>
+</div>
+<script>
+  const screens=[...document.querySelectorAll(".screen")], dots=[...document.querySelectorAll(".dot")];
+  function show(id){screens.forEach(s=>s.classList.toggle("active",s.id===id));const index=["profile","input","question","result"].indexOf(id);dots.forEach((d,i)=>d.classList.toggle("on",i===index))}
+  function selectChoice(el){document.querySelectorAll(".choice").forEach(c=>c.classList.remove("selected"));el.classList.add("selected")}
+  document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>c.classList.toggle("on"));
+  function saveResult(){navigator.clipboard?.writeText("2岁已绝育英短，软便持续3天，精神与食欲基本正常，5天前更换猫粮；目前未见明显便血或呕吐。");const t=document.getElementById("toast");t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800)}
+</script>
+</body>
+</html>
